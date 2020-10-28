@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cell : MonoBehaviour
+public class Room : MonoBehaviour
 {
 
-    public int size = 1;
-    bool closed = true;
+    Cell origin;
+    (int width, int height) size;
 
-    public Cell(){
-
+    Room(Cell origin, (int width, int height) size){
+        this.origin = origin;
+        this.size = size;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
