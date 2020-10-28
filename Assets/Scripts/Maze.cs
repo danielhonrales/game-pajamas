@@ -31,7 +31,7 @@ public class Maze : MonoBehaviour
             for(int j = 0; j < mazescape.GetLength(1); j++){
                 mazescape[i,j] = Instantiate(
                     cellPrefab, 
-                    new Vector3(origin.x + (j * cellPrefab.GetComponent<Cell>().size), origin.y + (i * cellPrefab.GetComponent<Cell>().size), 0), 
+                    new Vector3(origin.x + (j * cellPrefab.GetComponent<Cell>().size) / 100, origin.y + (i * cellPrefab.GetComponent<Cell>().size) / 100, 0), 
                     Quaternion.identity,
                     this.transform
                     );
