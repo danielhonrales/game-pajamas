@@ -6,7 +6,7 @@ public class Cell : MonoBehaviour
 {
 
     public float size;
-    bool closed;
+    public bool closed;
 
     // Start is called before the first frame update
     void Start()
