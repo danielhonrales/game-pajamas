@@ -177,7 +177,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.478067
+  orthographic size: 1.608738
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -394,8 +394,8 @@ MonoBehaviour:
     type: 3}
   maxTries: 0
   numRooms: 0
-  openSprite: {fileID: 0}
-  closedSprite: {fileID: 0}
+  openSprite: {fileID: 21300000, guid: cffa92524228f2848a94e222acfbe064, type: 3}
+  closedSprite: {fileID: 21300000, guid: 7ed199dced994f141af30e98d3a4f6ef, type: 3}
 --- !u!1 &1971206104
 GameObject:
   m_ObjectHideFlags: 0
