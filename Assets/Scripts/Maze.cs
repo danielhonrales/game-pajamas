@@ -30,6 +30,8 @@ public class Maze : MonoBehaviour
         //makeTestRooms();
         
         makeHallways();
+
+        makeExit();
     }
 
     // Update is called once per frame
@@ -81,6 +83,30 @@ public class Maze : MonoBehaviour
             }
         }
     }
+    
+    void makeTestRooms(){
+        rooms.Add(new Room(mazescape[16, 20], (16, 20), (6, 5)));
+        rooms.Add(new Room(mazescape[6, 4], (6, 4), (4, 4)));
+        rooms.Add(new Room(mazescape[10, 10], (10, 10), (3, 7)));
+
+        for(int i = 20; i < 25; i++){
+            for(int j = 16; j < 22; j++){
+                mazescape[i, j].GetComponent<Cell>().open();
+            }
+        }
+        
+        for(int i = 4; i < 8; i++){
+            for(int j = 6; j < 10; j++){
+                mazescape[i, j].GetComponent<Cell>().open();
+            }
+        }
+
+        for(int i = 10; i < 17; i++){
+            for(int j = 10; j < 13; j++){
+                mazescape[i, j].GetComponent<Cell>().open();
+            }
+        }
+    }
 
     bool roomCollision(Room newRoom)
     {
@@ -125,18 +151,22 @@ public class Maze : MonoBehaviour
             }
 
             // Choose a random column to carve towards
-            int xHallway = Random.Range(1, size.width - 3);
+            int xHallway = Random.Range(2, size.width - 3);
 
             // Choose a random wall of room i to open into a corridor
             (int x, int y) iyDoor = ((Sys.Math.Abs(rooms[i].position.x - xHallway) < Sys.Math.Abs(rooms[i].position.x + rooms[i].size.width - 1 - xHallway)) ? rooms[i].position.x : rooms[i].position.x + rooms[i].size.width - 1,
                                         Random.Range(rooms[i].position.y, rooms[i].position.y + rooms[i].size.height - 1));
             if(iyDoor.x < xHallway){
                 for(int corridor = iyDoor.x; corridor < xHallway; corridor++){
+                    //mazescape[iyDoor.y - 1, corridor].GetComponent<Cell>().open();
                     mazescape[iyDoor.y, corridor].GetComponent<Cell>().open();
+                    //mazescape[iyDoor.y + 1, corridor].GetComponent<Cell>().open();
                 }
             }else{
                 for(int corridor = xHallway; corridor < iyDoor.x; corridor++){
+                   // mazescape[iyDoor.y - 1, corridor].GetComponent<Cell>().open();
                     mazescape[iyDoor.y, corridor].GetComponent<Cell>().open();
+                    //mazescape[iyDoor.y + 1, corridor].GetComponent<Cell>().open();
                 }
             }
             
@@ -145,11 +175,15 @@ public class Maze : MonoBehaviour
                                         Random.Range(rooms[j].position.y, rooms[j].position.y + rooms[j].size.height - 1));
             if(jyDoor.x < xHallway){
                 for(int corridor = jyDoor.x; corridor < xHallway; corridor++){
+                    //mazescape[jyDoor.y - 1, corridor].GetComponent<Cell>().open();
                     mazescape[jyDoor.y, corridor].GetComponent<Cell>().open();
+                    //mazescape[jyDoor.y + 1, corridor].GetComponent<Cell>().open();
                 }
             }else{
                 for(int corridor = xHallway; corridor < jyDoor.x; corridor++){
+                    //mazescape[jyDoor.y - 1, corridor].GetComponent<Cell>().open();
                     mazescape[jyDoor.y, corridor].GetComponent<Cell>().open();
+                    //mazescape[jyDoor.y + 1, corridor].GetComponent<Cell>().open();
                 }
             }
 
@@ -157,34 +191,46 @@ public class Maze : MonoBehaviour
             int start = (iyDoor.y < jyDoor.y) ? iyDoor.y : jyDoor.y; 
             int end = (iyDoor.y > jyDoor.y) ? iyDoor.y : jyDoor.y; 
             for(int k = start; k <= end; k++){
+                mazescape[k, xHallway - 1].GetComponent<Cell>().open();
                 mazescape[k, xHallway].GetComponent<Cell>().open();
+                mazescape[k, xHallway + 1].GetComponent<Cell>().open();
             }
 
             int y = Random.Range(1, size.width - 3);
         }
     }
 
-    void makeTestRooms(){
-        rooms.Add(new Room(mazescape[16, 20], (16, 20), (6, 5)));
-        rooms.Add(new Room(mazescape[6, 4], (6, 4), (4, 4)));
-        rooms.Add(new Room(mazescape[10, 10], (10, 10), (3, 7)));
 
-        for(int i = 20; i < 25; i++){
-            for(int j = 16; j < 22; j++){
-                mazescape[i, j].GetComponent<Cell>().open();
+    void makeExit(){
+        // Choose exit (on north or south)
+        (int x, int y) exit = (0, 0);
+        exit.x = Random.Range(1, size.width - 2);
+
+        // Choose random room to connect to
+        Room room = rooms[Random.Range(0, rooms.Count - 1)];
+        (int x, int y) door = (Random.Range(room.position.x, room.position.x + room.size.width - 1), 
+                                Random.Range(room.position.y, room.position.y + room.size.height - 1));
+
+        // Carve exit hallway
+        if(exit.y > door.y){
+            for(int i = door.y; i < exit.y; i++){
+                mazescape[i, exit.x].GetComponent<Cell>().open();
+            }
+        }else{
+            for(int i = exit.y; i < door.y; i++){
+                mazescape[i, exit.x].GetComponent<Cell>().open();
             }
         }
-        
-        for(int i = 4; i < 8; i++){
-            for(int j = 6; j < 10; j++){
-                mazescape[i, j].GetComponent<Cell>().open();
-            }
-        }
 
-        for(int i = 10; i < 17; i++){
-            for(int j = 10; j < 13; j++){
-                mazescape[i, j].GetComponent<Cell>().open();
+        // Carve room corridor
+        if(exit.x > door.x){
+            for(int i = door.x; i < exit.x + 1; i++){
+                mazescape[door.y, i].GetComponent<Cell>().open();
+            }
+        }else{
+            for(int i = exit.x; i < door.x + 1; i++){
+                mazescape[door.y, i].GetComponent<Cell>().open();
             }
         }
     }
-}
+}   
