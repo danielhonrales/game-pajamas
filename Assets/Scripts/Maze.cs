@@ -11,8 +11,8 @@ public class Maze : MonoBehaviour
 
     public GameObject cellPrefab;
 
-    public int maxTries;
-    public int numRooms;
+    public int maxTries = 30;
+    public int minRooms = 3;
     public List<Room> rooms;
 
     // Start is called before the first frame update
@@ -20,14 +20,13 @@ public class Maze : MonoBehaviour
     {
         cellPrefab.GetComponent<Cell>().size = 32;
 
-        maxTries = 30;
-        numRooms = 0;
         rooms = new List<Room>();
 
         generateNewMaze();
 
         makeRooms();
         //makeTestRooms();
+        
         makeHallways();
     }
 
@@ -57,7 +56,7 @@ public class Maze : MonoBehaviour
 
     void makeRooms()
     {
-        // Generate random room (until maximum tries)
+        // Generate random room (until maxTries)
         for (int k = 0; k < maxTries; k++)
         {
             (int width, int height) roomSize = (Random.Range(3, 8), Random.Range(3, 8));
