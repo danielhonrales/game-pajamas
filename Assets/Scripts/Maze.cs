@@ -10,6 +10,7 @@ public class Maze : MonoBehaviour
     GameObject[,] mazescape;
 
     public GameObject cellPrefab;
+    public GameObject spawnpointPrefab;
 
     public int maxTries;
     public int minRooms;
@@ -78,6 +79,14 @@ public class Maze : MonoBehaviour
                     for (int j = newRoom.position.x; j < newRoom.size.width + newRoom.position.x - 1; j++)
                     {
                         mazescape[i, j].GetComponent<Cell>().open();
+                        
+                        // Random chance to instantiate a spawnpoint on the cell
+                        if(Random.Range(0, 21) == 20){
+                            Instantiate(spawnpointPrefab,
+                                        mazescape[i, j].transform.position,
+                                        Quaternion.identity,
+                                        mazescape[i, j].transform);
+                        }
                     }
                 }
             }
@@ -199,7 +208,6 @@ public class Maze : MonoBehaviour
             int y = Random.Range(1, size.width - 3);
         }
     }
-
 
     void makeExit(){
         // Choose exit (on north or south)

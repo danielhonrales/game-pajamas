@@ -200,7 +200,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1201555059
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &174755026
@@ -415,7 +415,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1201555059
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 07855f527eae95f4da2583cc7c2374a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -580,6 +580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 6877138514585154110, guid: a7d05122e85bc2e499c568db39ac5a5e,
+    type: 3}
+  spawnpointPrefab: {fileID: 5647429236656539333, guid: 8b595e8110c877c4d888aef0f668a86f,
     type: 3}
   maxTries: 0
   minRooms: 3

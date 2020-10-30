@@ -44,6 +44,9 @@ TagManager:
   - name: World
     uniqueID: 2926867637
     locked: 0
+  - name: Spawnpoints
+    uniqueID: 513984467
+    locked: 0
   - name: Player
     uniqueID: 3093412237
     locked: 0
