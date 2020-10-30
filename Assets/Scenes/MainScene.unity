@@ -191,7 +191,7 @@ Canvas:
   m_GameObject: {fileID: 174755022}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18ce0178a23cafd429fe7e379d75e53b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5aea1859adeeb414c87bc1a4248f6779, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -579,6 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e363c5ed5e3dd448e2a9abcb357a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 536910706}
   cellPrefab: {fileID: 6877138514585154110, guid: a7d05122e85bc2e499c568db39ac5a5e,
     type: 3}
   spawnpointPrefab: {fileID: 5647429236656539333, guid: 8b595e8110c877c4d888aef0f668a86f,
