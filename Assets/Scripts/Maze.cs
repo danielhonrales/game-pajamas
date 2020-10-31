@@ -46,7 +46,7 @@ public class Maze : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0);
     }
 
     void generateNewMaze()
