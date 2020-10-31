@@ -12,7 +12,7 @@ public class Maze : MonoBehaviour
     public GameObject player;
     public GameObject cellPrefab;
     public GameObject spawnpointPrefab;
-    public GameObject enemyPrefab;
+    public GameObject enemy;
     public GameObject generatorPrefab;
 
     public int maxTries;
@@ -104,7 +104,7 @@ public class Maze : MonoBehaviour
                 Instantiate(generatorPrefab,
                             mazescape[rooms[rooms.Count - 1].position.y + Random.Range(0, rooms[rooms.Count - 1].size.height), rooms[rooms.Count - 1].position.x + Random.Range(0, rooms[rooms.Count - 1].size.width)].transform.position,
                             Quaternion.identity);
-                            
+
                 // Spawn player in first room
                 if(k == 0){
                     player.transform.position = mazescape[rooms[0].position.y + Random.Range(0, rooms[0].size.height), rooms[0].position.x + Random.Range(0, rooms[0].size.width)].transform.position;
@@ -112,9 +112,7 @@ public class Maze : MonoBehaviour
 
                 // Spawn enemy in second room
                 if(rooms.Count == 2){
-                    Instantiate(enemyPrefab,
-                                mazescape[rooms[1].position.y + Random.Range(0, rooms[1].size.height), rooms[1].position.x + Random.Range(0, rooms[1].size.width)].transform.position,
-                                Quaternion.identity);
+                    enemy.transform.position = mazescape[rooms[1].position.y + Random.Range(0, rooms[1].size.height), rooms[1].position.x + Random.Range(0, rooms[1].size.width)].transform.position;
                 }
             }
         }
