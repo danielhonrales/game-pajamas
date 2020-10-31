@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 
+    public bool gameActive = false;
     public GameObject escapePrompt;
 
     public int generators = 0;
