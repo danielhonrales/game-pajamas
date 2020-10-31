@@ -114,3 +114,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorOn: 0
   player: {fileID: 0}
+  gameController: {fileID: 0}
+  generatorOnSprite: {fileID: 21300000, guid: 173466aa8c9437845abb6e654456b45e, type: 3}

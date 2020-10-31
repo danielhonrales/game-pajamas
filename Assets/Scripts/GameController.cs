@@ -7,10 +7,16 @@ public class GameController : MonoBehaviour
 
     public GameObject escapePrompt;
 
+    public int generators = 0;
+    public int generatorsOn = -1;
+
+    public GameObject gate;
+
     // Start is called before the first frame update
     void Start()
     {
         Screen.SetResolution(800, 800, true);
+
     }
 
     // Update is called once per frame
@@ -18,6 +24,10 @@ public class GameController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape)){
             escapePrompt.SetActive(!escapePrompt.activeSelf);
+        }
+
+        if(generatorsOn == generators){
+            gate.SetActive(false);
         }
     }
 }

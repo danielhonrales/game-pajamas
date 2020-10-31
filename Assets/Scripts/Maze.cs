@@ -19,8 +19,8 @@ public class Maze : MonoBehaviour
     public int minRooms;
     public List<Room> rooms;
 
-    public int generators;
-    public int generatorsOn;
+    public GameObject gameController;
+    public GameObject gate;
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +31,6 @@ public class Maze : MonoBehaviour
         minRooms = 3;
         rooms = new List<Room>();
 
-        generators = 0;
-        generatorsOn = 0;
-
         generateNewMaze();
 
         makeRooms();
@@ -42,6 +39,8 @@ public class Maze : MonoBehaviour
         makeHallways();
 
         makeExit();
+
+        gameController.GetComponent<GameController>().generatorsOn = 0;
     }
 
     // Update is called once per frame
@@ -102,8 +101,9 @@ public class Maze : MonoBehaviour
 
                 // Spawn generator in room
                 Instantiate(generatorPrefab,
-                            mazescape[rooms[rooms.Count - 1].position.y + Random.Range(0, rooms[rooms.Count - 1].size.height), rooms[rooms.Count - 1].position.x + Random.Range(0, rooms[rooms.Count - 1].size.width)].transform.position,
+                            mazescape[rooms[rooms.Count - 1].position.y + Random.Range(0, rooms[rooms.Count - 1].size.height - 1), rooms[rooms.Count - 1].position.x + Random.Range(0, rooms[rooms.Count - 1].size.width - 1)].transform.position,
                             Quaternion.identity);
+                gameController.GetComponent<GameController>().generators++;
 
                 // Spawn player in first room
                 if(k == 0){
@@ -294,5 +294,7 @@ public class Maze : MonoBehaviour
                 mazescape[door.y, i].GetComponent<Cell>().open();
             }
         }
+
+        gate.transform.position = mazescape[exit.y, exit.x].transform.position;
     }
 }
