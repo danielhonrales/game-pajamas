@@ -6,12 +6,16 @@ public class Generator : MonoBehaviour
 {
 
     public bool generatorOn;
+    public bool visited;
     public GameObject player;
+    public GameObject gameController;
+    public Sprite generatorOnSprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        generatorOn = false;
+        gameController = GameObject.Find("GameController");
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -20,11 +24,12 @@ public class Generator : MonoBehaviour
         
     }
 
-    private void onTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.transform.parent == player){
-            generatorOn = true;
-            
+        if(other.gameObject.tag == "Player" && !visited){
+            gameController.GetComponent<GameController>().generatorsOn++;
+            GetComponent<SpriteRenderer>().sprite = generatorOnSprite;
+            visited = true;
         }
     }
 }
