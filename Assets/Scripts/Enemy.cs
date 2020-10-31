@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour{
     public float moveSpeed = 6f;
     private Rigidbody2D rb;
     private Vector2 movement;
+    public GameObject gameController;
 
     // Start is called before the first frame update
     void Start(){
@@ -23,7 +24,9 @@ public class Enemy : MonoBehaviour{
         movement = direction;
     }
     private void FixedUpdate() {
-        moveCharacter(movement);
+        if(gameController.GetComponent<GameController>().gameActive){
+            moveCharacter(movement);
+        }
     }
     void moveCharacter(Vector2 direction){
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
