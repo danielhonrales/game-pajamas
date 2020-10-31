@@ -42,12 +42,15 @@ public class Maze : MonoBehaviour
         makeHallways();
 
         makeExit();
+
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void generateNewMaze()

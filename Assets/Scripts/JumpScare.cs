@@ -7,9 +7,11 @@ public class JumpScare : MonoBehaviour {
     public Image image;
     public AudioSource audioSource;
  
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        StartCoroutine(JumpScare_CR());
+        if(other.gameObject.tag == "Player"){
+            Application.Quit();
+        }
     }
  
     IEnumerator JumpScare_CR()
