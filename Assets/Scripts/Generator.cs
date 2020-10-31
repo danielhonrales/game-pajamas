@@ -24,6 +24,7 @@ public class Generator : MonoBehaviour
     {
         if(other.transform.parent == player){
             generatorOn = true;
+            
         }
     }
 }
