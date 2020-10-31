@@ -12,6 +12,7 @@ public class Maze : MonoBehaviour
     public GameObject player;
     public GameObject cellPrefab;
     public GameObject spawnpointPrefab;
+    public GameObject enemyPrefab;
 
     public int maxTries;
     public int minRooms;
@@ -94,6 +95,12 @@ public class Maze : MonoBehaviour
 
                 if(k == 0){
                     player.transform.position = mazescape[rooms[0].position.y + Random.Range(0, rooms[0].size.height), rooms[0].position.x + Random.Range(0, rooms[0].size.width)].transform.position;
+                }
+
+                if(rooms.Count == 2){
+                    Instantiate(enemyPrefab,
+                                mazescape[rooms[1].position.y + Random.Range(0, rooms[1].size.height), rooms[1].position.x + Random.Range(0, rooms[1].size.width)].transform.position,
+                                Quaternion.identity);
                 }
             }
         }
