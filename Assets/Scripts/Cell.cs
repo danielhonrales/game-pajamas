@@ -28,5 +28,6 @@ public class Cell : MonoBehaviour
     public void open(){
         closed = false;
         GetComponent<SpriteRenderer>().sprite = openSprite;
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 }
