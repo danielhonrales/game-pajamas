@@ -13,10 +13,14 @@ public class Maze : MonoBehaviour
     public GameObject cellPrefab;
     public GameObject spawnpointPrefab;
     public GameObject enemyPrefab;
+    public GameObject generatorPrefab;
 
     public int maxTries;
     public int minRooms;
     public List<Room> rooms;
+
+    public int generators;
+    public int generatorsOn;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,9 @@ public class Maze : MonoBehaviour
         maxTries = 30;
         minRooms = 3;
         rooms = new List<Room>();
+
+        generators = 0;
+        generatorsOn = 0;
 
         generateNewMaze();
 
@@ -93,10 +100,17 @@ public class Maze : MonoBehaviour
                     }
                 }
 
+                // Spawn generator in room
+                Instantiate(generatorPrefab,
+                            mazescape[rooms[rooms.Count - 1].position.y + Random.Range(0, rooms[rooms.Count - 1].size.height), rooms[rooms.Count - 1].position.x + Random.Range(0, rooms[rooms.Count - 1].size.width)].transform.position,
+                            Quaternion.identity);
+                            
+                // Spawn player in first room
                 if(k == 0){
                     player.transform.position = mazescape[rooms[0].position.y + Random.Range(0, rooms[0].size.height), rooms[0].position.x + Random.Range(0, rooms[0].size.width)].transform.position;
                 }
 
+                // Spawn enemy in second room
                 if(rooms.Count == 2){
                     Instantiate(enemyPrefab,
                                 mazescape[rooms[1].position.y + Random.Range(0, rooms[1].size.height), rooms[1].position.x + Random.Range(0, rooms[1].size.width)].transform.position,
