@@ -44,11 +44,11 @@ public class GeneratorTask : MonoBehaviour
     {
         if (GeneratorCollison() == true)
         {
-            generatorOn == true;
+            generatorOn = true;
         }
         else
         {
-            generatorOn == false;
+            generatorOn = false;
         }
 
         return false;
