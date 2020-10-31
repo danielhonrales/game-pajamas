@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6877138514585154108}
   - component: {fileID: 3500748577122088065}
   - component: {fileID: 8622038361095791668}
+  - component: {fileID: -2456019458044146430}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -127,3 +128,24 @@ MonoBehaviour:
   visited: 0
   openSprite: {fileID: 21300000, guid: cffa92524228f2848a94e222acfbe064, type: 3}
   closedSprite: {fileID: 21300000, guid: 7ed199dced994f141af30e98d3a4f6ef, type: 3}
+--- !u!50 &-2456019458044146430
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6877138514585154110}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
