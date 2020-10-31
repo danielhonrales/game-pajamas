@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rooms : MonoBehaviour
+public class GameController : MonoBehaviour
 {
-
-    List<Room> rooms;
-
     // Start is called before the first frame update
     void Start()
     {
-        rooms = new List<Room>();
+        Screen.SetResolution(800, 800, true);
     }
 
     // Update is called once per frame
