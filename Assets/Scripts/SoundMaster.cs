@@ -20,7 +20,7 @@ public class SoundMaster : MonoBehaviour
     }
 
     IEnumerator playSounds(){
-        sounds[Random.Range(0, sounds.Count - 1)].Play();
+        sounds[Random.Range(0, sounds.Count)].Play();
 
         yield return new WaitForSecondsRealtime(Random.Range(5, 21));
 
