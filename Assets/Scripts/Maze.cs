@@ -40,22 +40,13 @@ public class Maze : MonoBehaviour
 
         makeExit();
 
-<<<<<<< HEAD
-        
-
-=======
         gameController.GetComponent<GameController>().generatorsOn = 0;
->>>>>>> 08bf0d98a09e2590ec1170e8e2d3b27b257d131f
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-        enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0);
-=======
         
->>>>>>> 00314d0e1c0d685ab258b34e4a8d50d576d5fbc3
     }
 
     void generateNewMaze()

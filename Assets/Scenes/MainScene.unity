@@ -1178,9 +1178,8 @@ MonoBehaviour:
   m_Text: 'WASD / Arrow Keys to move
 
 
-    You''re trapped in a labyrinth with a
-    spooky ghost! Touch all the generators around the labyrinth to unlock the gate
-    and escape...'
+    You''re trapped in a labyrinth with a spooky ghost! Touch all the generators around
+    the labyrinth to unlock the gate and escape...'
 --- !u!222 &1182321883
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1541,8 +1540,7 @@ MonoBehaviour:
 
     Manav Modi
 
-    Wasif
-    Reaz
+    Wasif Reaz
 
     Alan Lee'
 --- !u!222 &1237372887
